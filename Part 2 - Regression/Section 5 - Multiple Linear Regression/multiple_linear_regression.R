@@ -1,5 +1,5 @@
 # Multiple Linear Regression
-
+setwd("D:/GitPractice/machine-learning-course/Part 2 - Regression/Section 5 - Multiple Linear Regression")
 # Importing the dataset
 dataset = read.csv('50_Startups.csv')
 
@@ -26,3 +26,24 @@ regressor = lm(formula = Profit ~ .,
 
 # Predicting the Test set results
 y_pred = predict(regressor, newdata = test_set)
+
+#Building the optimal model usign Backward Elimination
+regressor = lm(formula = Profit ~ R.D.Spend + Administration + Marketing.Spend + State,
+               data = dataset)
+
+summary(regressor)
+
+regressor = lm(formula = Profit ~ R.D.Spend + Administration + Marketing.Spend,
+               data = dataset)
+
+summary(regressor)
+
+regressor = lm(formula = Profit ~ R.D.Spend + Marketing.Spend,
+               data = dataset)
+
+summary(regressor)
+
+regressor = lm(formula = Profit ~ R.D.Spend,
+               data = dataset)
+
+summary(regressor)
